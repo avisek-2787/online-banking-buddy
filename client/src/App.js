@@ -69,7 +69,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-blue-700">🏦 My Net Banking Buddy</h1>
+        <h1 className="text-3xl font-bold logo-color">🏦 My Net Banking Buddy</h1>
         <button
           onClick={handleLogout}
           className="bg-red-500 text-white px-4 py-2 rounded-xl shadow hover:bg-red-600"
@@ -78,7 +78,7 @@ export default function App() {
         </button>
       </div>
 
-        <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-2xl shadow-md p-4 mb-4 animate-fade-in">
+        <div className="bg-gradient-to-r to-indigo-600 text-white rounded-2xl shadow-md p-4 mb-4 animate-fade-in">
           <h2 className="text-xl font-semibold">👋 {user.welcomeMessage}</h2>
           
         </div>

@@ -4,6 +4,7 @@ import MutualFunds from './components/MutualFunds';
 import AccountSummary from './components/AccountSummary'
 import Deposits from './components/Deposits'
 import DepositForm from './components/DepositForm'
+import TransactionList from './components/TransactionList'
 
 function ChatBox() {
     const [messages, setMessages] = useState([]);
@@ -25,17 +26,18 @@ function ChatBox() {
 
     return (
         <div className="flex flex-col">
-            <div className="h-80 overflow-y-auto border border-gray-200 rounded-md p-4 bg-gray-50 mb-4">
+            <div className="h-80 overflow-y-auto border border-gray-200 rounded-md p-4 transparent-bg mb-4">
                 {messages.map((msg, i) => (
                     <React.Fragment>
 
                         {msg.text === 'account_summary' ? (<AccountSummary />) :
+                        msg.text === 'transaction_list' ? (<TransactionList />) :
                             msg.text === 'FD_or_RD' ? (<Deposits />) :
                                 msg.text === 'FD_or_RD_invest' ? (<DepositForm />) :
 
                                     msg.text === 'show_mutual' ? (<MutualFunds />) : (
 
-                                        <div key={i} className={`mb-3 flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
+                                        <div key={i} className={`mb-3 mt-2 flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                                             <div
                                                 className={`px-4 py-2 rounded-xl max-w-xs shadow-sm ${msg.from === "user" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-800"
                                                     }`}
@@ -63,13 +65,14 @@ function ChatBox() {
                 >
                     Send
                 </button>
-            </div>
-            <button
+                 <button
                 onClick={() => setMessages([])}
-                className="text-sm text-red-500 mt-2 hover:underline self-end"
+                className="text-sm mt-2 hover:underline custom-link"
             >
                 Clear Chat
             </button>
+            </div>
+           
         </div>
     );
 }

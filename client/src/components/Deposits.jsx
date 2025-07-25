@@ -33,20 +33,20 @@ const FDList = () => {
             <tbody>
               {deposits?.fd?.map(fd => (
                 <tr key={fd.id} className="border-t text-gray-800">
-                  <td>₹{fd.amount}</td>
-                  <td>{fd.label}</td>
-                  <td>{fd.tenure}</td>
-                  <td>{fd.date}</td>
+                  <td className='padding-2'>₹{fd.amount}</td>
+                  <td className='padding-2'>{fd.label}</td>
+                  <td className='padding-2'>{fd.tenure}</td>
+                  <td className='padding-2'>{fd.date}</td>
                 </tr>
               ))}
             </tbody>
             <tbody>
               {deposits?.rd?.map(rd => (
                 <tr key={rd.id} className="border-t text-gray-800">
-                  <td>₹{rd.amount}</td>
-                  <td>{rd.label}</td>
-                  <td>{rd.tenure}</td>
-                  <td>{rd.date}</td>
+                  <td className='padding-2'>₹{rd.amount}</td>
+                  <td className='padding-2'>{rd.label}</td>
+                  <td className='padding-2'>{rd.tenure}</td>
+                  <td className='padding-2'>{rd.date}</td>
                 </tr>
               ))}
             </tbody>
@@ -66,9 +66,9 @@ const FDList = () => {
             <tbody>
               {fds.map(fd => (
                 <tr key={fd.id} className="border-t text-gray-800">
-                  <td>₹{fd.amount}</td>
-                  <td>{fd.rate}</td>
-                  <td>{fd.tenure}</td>
+                  <td className='padding-2'>₹{fd.amount}</td>
+                  <td className='padding-2'>{fd.rate}</td>
+                  <td className='padding-2'>{fd.tenure}</td>
                   
                 </tr>
               ))}

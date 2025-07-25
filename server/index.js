@@ -11,9 +11,9 @@ const userProfile = {
   username: "Avisek",
   balance: 52430.75,
   transactions: [
-    { amount: -1500, label: "Amazon", date: "2025-07-21" },
-    { amount: +2200, label: "UPI", date: "2025-07-20" },
-    { amount: -300, label: "ATM Withdrawal", date: "2025-07-19" },
+    { amount: -1500, label: "Amazon", date: "7/21/2025" },
+    { amount: +2200, label: "UPI", date: "7/20/2025" },
+    { amount: -300, label: "ATM Withdrawal", date: "7/08/2025" },
   ],
   creditCardDue: "2025-08-05",
   location: "Salt Lake, Kolkata",
@@ -28,7 +28,7 @@ const userProfile = {
 function detectIntent(message) {
   const text = message.toLowerCase();
   if (text.includes("balance")) return "balance";
-  if (text.includes("transaction") || text.includes("statement")) return "transactions";
+  //if (text.includes("transaction") || text.includes("statement")) return "transactions";
   if (text.includes("block") || text.includes("lost") || text.includes("card")) return "block_card";
   if (text.includes("credit card") && text.includes("due")) return "credit_due";
   if (text.includes("loan") || text.includes("eligible")) return "loan_eligibility";
@@ -38,6 +38,7 @@ function detectIntent(message) {
   if (text.includes("account") || text.includes("summary")) return "account_summary";
   if (text.includes("fd") || text.includes("rd")) return "FD_or_RD";
   if (text.includes("deposit") || text.includes("rd") || text.includes("fd")) return "FD_or_RD_invest";
+  if (text.includes("transaction") || text.includes("history")) return "transaction_list";
   return "fallback";
 }
 
@@ -45,12 +46,6 @@ function getReply(intent, message) {
   switch (intent) {
     case "balance":
       return `Your account balance is ₹${userProfile.balance.toFixed(2)}.`;
-
-    case "transactions":
-      return (
-        "Recent transactions:\n" +
-        userProfile.transactions.map(t => `• ${t.date} - ₹${t.amount} - ${t.label}`).join("\n")
-      );
 
     case "block_card":
       return "Your debit card has been blocked. A new card will be issued within 5 business days.";
@@ -72,6 +67,9 @@ function getReply(intent, message) {
       return `FD_or_RD`;
     case "FD_or_RD_invest":
       return `FD_or_RD_invest`;
+case "transaction_list":
+      return `transaction_list`;
+      
     //Transfer ₹1000 to account 1234567890
     case "fund_transfer": {
       const amountMatch = message.match(/(?:₹|rs\.?\s?)(\d+(?:\.\d+)?)/i);
